@@ -1,0 +1,2 @@
+include ':app', ':magictip'
+rootProject.name='Magic Tip example'
