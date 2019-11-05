@@ -6,7 +6,7 @@ import devit951.github.magictip.MagicTipView
 
 class AnimatedClickDelegate: MagicTipClickDelegate {
     override fun onClick(magicTipView: MagicTipView, decorView: ViewGroup) {
-        magicTipView.exitAnimationDelegate?.animate(magicTipView){
+        magicTipView.startExitAnimation {
             decorView.removeView(magicTipView)
         }
     }

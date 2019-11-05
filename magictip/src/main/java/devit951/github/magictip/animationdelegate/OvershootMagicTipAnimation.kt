@@ -1,8 +1,8 @@
 package devit951.github.magictip.animationdelegate
 
 import android.view.ViewPropertyAnimator
-import android.view.animation.LinearInterpolator
 import android.view.animation.OvershootInterpolator
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import devit951.github.magictip.EndableMagicTipAnimationDelegate
 import devit951.github.magictip.MagicTipAnimationDelegate
 import devit951.github.magictip.MagicTipView
@@ -32,10 +32,8 @@ class OvershootMagicTipAnimation(
 
         override fun animate(magicTipView: MagicTipView, onAnimationEnd: () -> Unit) {
             overshootMagicTipAnimation.animated(magicTipView)
-                .setInterpolator(LinearInterpolator())
-                .withEndAction {
-                    onAnimationEnd.invoke()
-                }
+                .setInterpolator(FastOutSlowInInterpolator())
+                .withEndAction(onAnimationEnd)
         }
     }
 }
