@@ -9,12 +9,6 @@ import androidx.core.view.ViewCompat
 
 class MagicTipView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : TextView(context, attrs, defStyleAttr) {
 
-    var bgColor = Color.RED
-        set(value) {
-            field = value
-            bgPaint.color = value
-        }
-
     private val bgPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.FILL
     }
@@ -24,6 +18,15 @@ class MagicTipView @JvmOverloads constructor(context: Context, attrs: AttributeS
     private var magicTipPadding = dp2Px(4)
     private var widthOfTriangle = dp2Px(14)
     private var heightOfTriangle = dp2Px(10)
+
+    var bgColor = Color.RED
+        set(value) {
+            field = value
+            bgPaint.color = value
+        }
+
+    var magicTipAnimationDelegate: MagicTipAnimationDelegate? = null
+
 
     init {
         setPadding(magicTipPadding, magicTipPadding, magicTipPadding, magicTipPadding + heightOfTriangle)
@@ -45,6 +48,11 @@ class MagicTipView @JvmOverloads constructor(context: Context, attrs: AttributeS
         canvas.drawRoundRect(RectF(0f, 0f, width.toFloat(), height.toFloat() - heightOfTriangle), 20f, 20f, bgPaint)
         canvas.drawPath(trianglePath, bgPaint)
         super.onDraw(canvas)
+    }
+
+
+    internal fun animateSelf(){
+        magicTipAnimationDelegate?.animate(this)
     }
 
     private fun sizeSetUp(w: Int, h: Int){
