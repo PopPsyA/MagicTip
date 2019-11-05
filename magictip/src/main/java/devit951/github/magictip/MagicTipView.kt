@@ -6,6 +6,8 @@ import android.util.AttributeSet
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.view.ViewCompat
+import devit951.github.magictip.onclickdelegate.AnimatedClickDelegate
+import devit951.github.magictip.onclickdelegate.ImmediatlyRemoveViewClickDelegate
 
 class MagicTipView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : TextView(context, attrs, defStyleAttr) {
 
@@ -19,14 +21,21 @@ class MagicTipView @JvmOverloads constructor(context: Context, attrs: AttributeS
     private var widthOfTriangle = dp2Px(14)
     private var heightOfTriangle = dp2Px(10)
 
+
+    internal var clickDelegate: MagicTipClickDelegate = ImmediatlyRemoveViewClickDelegate()
+
     var bgColor = Color.RED
         set(value) {
             field = value
             bgPaint.color = value
         }
 
-    var magicTipAnimationDelegate: MagicTipAnimationDelegate? = null
-
+    var startAnimationDelegate: MagicTipAnimationDelegate? = null
+    var exitAnimationDelegate: EndableMagicTipAnimationDelegate? = null
+        set(value) {
+            field = value
+            clickDelegate = AnimatedClickDelegate()
+        }
 
     init {
         setPadding(magicTipPadding, magicTipPadding, magicTipPadding, magicTipPadding + heightOfTriangle)
@@ -51,8 +60,12 @@ class MagicTipView @JvmOverloads constructor(context: Context, attrs: AttributeS
     }
 
 
-    internal fun animateSelf(){
-        magicTipAnimationDelegate?.animate(this)
+    internal fun startEnterAnimation(){
+        startAnimationDelegate?.animate(this)
+    }
+
+    internal fun startExitAnimation(onAnimationEnd: () -> Unit){
+        exitAnimationDelegate?.animate(this, onAnimationEnd)
     }
 
     private fun sizeSetUp(w: Int, h: Int){

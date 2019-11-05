@@ -2,7 +2,6 @@ package devit951.github.magictip
 
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.OvershootInterpolator
 import java.lang.ref.WeakReference
 
 class MagicTip(private val anchorView: View) {
@@ -36,11 +35,11 @@ class MagicTip(private val anchorView: View) {
                     x = location[0].toFloat() + ((anchorView.width - width) / 2f)
                     y = location[1].toFloat() - height - padding
                     visibility = View.VISIBLE
-                    animateSelf()
+                    startEnterAnimation()
                 }
             }
             setOnClickListener {
-                decorView.removeView(this)
+                clickDelegate.onClick(this, decorView)
             }
         })
     }

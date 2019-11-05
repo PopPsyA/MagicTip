@@ -7,6 +7,7 @@ import devit951.github.magictip.MagicTip
 import devit951.github.magictip.animationdelegate.AlphaMagicTipAnimation
 import devit951.github.magictip.animationdelegate.CombinedMagicTipAnimation
 import devit951.github.magictip.animationdelegate.OvershootMagicTipAnimation
+import devit951.github.magictip.onclickdelegate.AnimatedClickDelegate
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -25,7 +26,8 @@ class MainActivity : AppCompatActivity() {
         imageView.setOnClickListener {
             MagicTip(it)
                 .settings {
-                    magicTipAnimationDelegate = CombinedMagicTipAnimation(OvershootMagicTipAnimation(), AlphaMagicTipAnimation())
+                    startAnimationDelegate = CombinedMagicTipAnimation(OvershootMagicTipAnimation(), AlphaMagicTipAnimation())
+                    exitAnimationDelegate = OvershootMagicTipAnimation.Reversed()
                     text = "Lorem Posen"
                     bgColor = Color.BLUE
                 }
