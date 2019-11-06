@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import devit951.github.magictip.AutoCloseMagicTip
 import devit951.github.magictip.MagicTip
+import devit951.github.magictip.OneMagicTip
 import devit951.github.magictip.animationdelegate.AlphaMagicTipAnimation
 import devit951.github.magictip.animationdelegate.CombinedMagicTipAnimation
 import devit951.github.magictip.animationdelegate.ScaledTranslateMagicTipAnimation
@@ -24,13 +25,13 @@ class MainActivity : AppCompatActivity() {
                 .show()
         }
         imageView.setOnClickListener {
-            MagicTip(it)
+            OneMagicTip(it, MagicTip(it)
                 .settings {
                     startAnimationDelegate = CombinedMagicTipAnimation(ScaledTranslateMagicTipAnimation())
                     exitAnimationDelegate = ScaledTranslateMagicTipAnimation.Reversed()
                     text =  "Lorem Posen"
                     bgColor = Color.BLUE
-                }
+                })
                 .show()
         }
     }
