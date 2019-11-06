@@ -4,14 +4,14 @@ import android.view.View
 import android.view.ViewGroup
 import java.lang.ref.WeakReference
 
-class MagicTip(private val anchorView: View) {
+open class MagicTip(private val anchorView: View) {
 
     private val weakAnchorView = WeakReference<View>(anchorView)
     private val padding = dp2Px(8)
-    private val decorView: ViewGroup
-    private val magicTipView: MagicTipView
     private var onMagicTipView: (MagicTipView.() -> Unit)? = null
 
+    internal val decorView: ViewGroup
+    internal val magicTipView: MagicTipView
 
     init {
         val activity = weakAnchorView.get()!!.activity()
@@ -24,7 +24,7 @@ class MagicTip(private val anchorView: View) {
         return this
     }
 
-    fun show(){
+    open fun show(){
         decorView.addView(magicTipView.apply {
             visibility = View.INVISIBLE
             onMagicTipView?.invoke(this)
