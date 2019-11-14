@@ -3,6 +3,7 @@ package devit951.github.magictip
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.view.ViewCompat
@@ -17,9 +18,9 @@ class MagicTipView @JvmOverloads constructor(context: Context, attrs: AttributeS
 
     private val trianglePath = Path()
 
-    private var magicTipPadding = dp2Px(4)
+    private var magicTipPadding = dp2Px(5)
     private var widthOfTriangle = dp2Px(14)
-    private var heightOfTriangle = dp2Px(10)
+    private var heightOfTriangle = dp2Px(12)
 
 
     internal var clickDelegate: MagicTipClickDelegate = ImmediatlyRemoveViewClickDelegate()
@@ -28,6 +29,7 @@ class MagicTipView @JvmOverloads constructor(context: Context, attrs: AttributeS
         set(value) {
             field = value
             bgPaint.color = value
+            bgPaint.setShadowLayer(4f, 0.0f, 2.5f, manipulateColor(field, 0.8f))
         }
 
     var startAnimationDelegate: MagicTipAnimationDelegate? = null
@@ -46,6 +48,7 @@ class MagicTipView @JvmOverloads constructor(context: Context, attrs: AttributeS
             setMargins(margin, margin, margin, margin)
         }
         ViewCompat.setTranslationZ(this, Integer.MAX_VALUE.toFloat())
+        setLayerType(View.LAYER_TYPE_SOFTWARE, bgPaint)
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -73,7 +76,7 @@ class MagicTipView @JvmOverloads constructor(context: Context, attrs: AttributeS
         val halfTriangleWidth = widthOfTriangle / 2f
         val y = h.toFloat() - heightOfTriangle
         trianglePath.moveTo(halfWidth - halfTriangleWidth, y)
-        trianglePath.lineTo(halfWidth, h.toFloat())
+        trianglePath.lineTo(halfWidth, h.toFloat() - 5)
         trianglePath.lineTo(halfWidth + halfTriangleWidth, y)
     }
 }
