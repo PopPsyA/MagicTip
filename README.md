@@ -1,6 +1,7 @@
 # MagicTip
 
 [![](https://jitpack.io/v/Devit951/MagicTip.svg)](https://jitpack.io/#Devit951/MagicTip)
+[![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-MagicTip-green.svg?style=flat )]( https://android-arsenal.com/details/1/7962 )
 
 ## Example
 
