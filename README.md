@@ -21,7 +21,7 @@ MagicTip(anchorView)
 AutoCloseMagicTip by default close tip after 1000 milliseconds. You can change it in the constructor: 
 
 ```
-AutoCloseMagicTip(view, delayMillis)
+AutoCloseMagicTip(anchorView, delayMillis)
                     .settings {
                         text = "Lorem Posen"
                         bgColor = Color.GREEN
@@ -32,7 +32,7 @@ AutoCloseMagicTip(view, delayMillis)
 ## OneMagicTip
 OneMagicTip - it is decorator that shows only 1 MagicTip.
  ```
- OneMagicTip(it, MagicTip(it)
+ OneMagicTip(anchorView, MagicTip(anchorView)
                     .settings {
                         text = "Lorem Posen"
                         bgColor = Color.BLUE
