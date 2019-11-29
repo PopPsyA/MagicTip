@@ -2,6 +2,7 @@
 
 [![](https://jitpack.io/v/Devit951/MagicTip.svg)](https://jitpack.io/#Devit951/MagicTip)
 [![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-MagicTip-green.svg?style=flat )]( https://android-arsenal.com/details/1/7962 )
+![](https://ci5.googleusercontent.com/proxy/LLcEjp3PS_t4HrRKqAzo0HHMLRje-z8nWcFsO1sbhmlySW-Zhte3s8IC-TddsbqlFC9ZKHJwbvdwW0IHVhaiftfXX--Zr3_s5bhC8S5kT2EX11cgVXAnfmPyZn7jPk9b_v2CCixTWkwj=s0-d-e1-ft#https://github.com/vbauer/android-arsenal.com/raw/master/misc/android-arsenal-logo.png)
 
 ![20191114_151821](https://user-images.githubusercontent.com/21290800/68848808-c1b5f080-06f2-11ea-8dee-d3ffaef86a9c.gif)
 
